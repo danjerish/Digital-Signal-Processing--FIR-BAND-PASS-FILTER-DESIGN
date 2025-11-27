@@ -20,6 +20,29 @@ Step 6: Terminate the program.
 
 ## PROGRAM: 
 
+clc; % clear screen
+clear all; % clear screen
+close all; % close all figure windows
+wc1=input('enter the value of cut off frequency wc1'); 
+wc2=input('enter the value of cut off frequency wc2'); 
+N=input('enter the value of filter'); 
+alpha=(N-1)/2; 
+eps=0.001; 
+%Band Pass Filter Coefficient
+n=0:1:N-1; 
+hd=(sin(wc1*(n-alpha+eps))-sin(wc2*(n-alpha+eps)))./((n-alpha+eps)*pi)
+%Bartlett Window Sequence 
+n=0:1:N-1; 
+wh = 1 - abs(n - alpha) / alpha;
+hn=hd.*wh
+% Plot the Band Pass Filter with Hanning Window Technique
+w=0:0.01:pi; 
+h=freqz(hn,1,w);
+plot(w/pi,abs(h),'blue');
+
 ## OUTPUT:
+<img width="1588" height="803" alt="dspexp6" src="https://github.com/user-attachments/assets/0f83c85f-6725-4318-965c-d8050af49f6d" />
 
 ## RESULT:
+![EXP6](https://github.com/user-attachments/assets/c1279106-3a56-4dcb-b886-90a03e1766f5)
+
